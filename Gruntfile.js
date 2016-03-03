@@ -6,7 +6,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-imagemin');
   grunt.registerTask('default', ['htmlmin', 'less', 'jshint', 'uglify', 'imagemin', 'watch']);
   grunt.initConfig({
-//less task
+//less task (compile and convert less into css)
 less: {
   development: {
     options: {
@@ -15,11 +15,11 @@ less: {
       optimization: 2
     },
     files: {
-"../style.css": "source/less/style.less", // destination file and source file
+"../style.css": "source/less/style.less", // first way - compiled css, second - less file(s)
 }
 }
 },
-//validation js task
+//Task for validate js file`s
 jshint: {
   development: {
     options: {
@@ -30,10 +30,10 @@ jshint: {
         optimization: 2
       }
     },
-    files: {'../js/custom.min.js' : 'source/js/**/*.js'}
+    files: {'../js/custom.min.js' : 'source/js/**/*.js'} // first way compiled file, second source code
   }
 },
-// minify js task
+// Task for minify and compress js file`s
 uglify: {
   my_target: {
     files: {
@@ -41,7 +41,7 @@ uglify: {
 }
 }
 },
-// minify html task
+// Task for minify HTML
 htmlmin: {
 dist: {
 options: {
@@ -58,7 +58,7 @@ dev: { // Another target
   }
 }
 },
-// html prettyprinter task
+// Task for beautyfy HTML code
 'html-prettyprinter': {
   custom: {
     src: 'index.html',
@@ -70,14 +70,14 @@ dev: { // Another target
     }
   }
 },
-//image minimization task
+//Task for minify images
 imagemin: {
       dynamic: {
         files: [{
             expand: true,
-            cwd: 'source/',
-            src: ['**/*.{png,jpg,gif,svg}'],
-            dest: './'
+            cwd: 'source/', // way where to search the images
+            src: ['**/*.{png,jpg,gif,svg}'], // formats for convert
+            dest: './' //folder for save result
     }]
     }
 },

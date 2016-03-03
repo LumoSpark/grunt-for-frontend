@@ -1,5 +1,5 @@
 {
-  "name": "TORPANPIHA",
+  "name": "Project name",
   "version": "1.0.0",
   "description": "CREATED BY LUMOSPARK",
   "main": "Gruntfile.js",
@@ -8,11 +8,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@bitbucket.org:lumosparkdev/spark-torpanpiha.git"
+    "url": "link to repository"
   },
   "author": "",
   "license": "ISC",
-  "homepage": "https://bitbucket.org/lumosparkdev/spark-torpanpiha",
+  "homepage": "homepage to site",
   "devDependencies": {
     "grunt": "^0.4.5",
     "grunt-cli": "^0.1.13",

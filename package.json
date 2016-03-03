@@ -1,0 +1,32 @@
+{
+  "name": "TORPANPIHA",
+  "version": "1.0.0",
+  "description": "CREATED BY LUMOSPARK",
+  "main": "Gruntfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@bitbucket.org:lumosparkdev/spark-torpanpiha.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/lumosparkdev/spark-torpanpiha",
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-cli": "^0.1.13",
+    "grunt-contrib-htmlmin": "^0.6.0",
+    "grunt-contrib-imagemin": "^1.0.0",
+    "grunt-contrib-jshint": "^1.0.0",
+    "grunt-contrib-less": "^1.1.0",
+    "grunt-contrib-uglify": "^0.11.1",
+    "grunt-contrib-watch": "^0.6.1",
+    "jit-grunt": "^0.9.1"
+  },
+  "dependencies": {
+    "grunt": "^0.4.5",
+    "grunt-legacy-util": "^0.2.0",
+    "modulename": "0.0.4"
+  }
+}

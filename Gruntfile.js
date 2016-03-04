@@ -15,7 +15,7 @@ less: {
       optimization: 2
     },
     files: {
-"../style.css": "source/less/style.less", // first way - compiled css, second - less file(s)
+"../release/style.css": "less/style.less", // first way - compiled css, second - less file(s)
 }
 }
 },
@@ -30,15 +30,22 @@ jshint: {
         optimization: 2
       }
     },
-    files: {'../js/custom.min.js' : 'source/js/**/*.js'} // first way compiled file, second source code
+    // files: {'../release/js/custom.min.js' : 'js/**/*.js'} // first way compiled file, second source code
+            files: grunt.file.expandMapping(['js/**/*.js'], '../release/', {
+            rename: function(destBase, destPath) {
+                return destBase+destPath.replace('.js', '.min.js');
+            }
+        })
   }
 },
 // Task for minify and compress js file`s
 uglify: {
   my_target: {
-    files: {
-'../js/custom.min.js': ['source/js/**/*.js']  //file directory to save minifyed files
-}
+        files: grunt.file.expandMapping(['js/**/*.js'], '../release/', {
+            rename: function(destBase, destPath) {
+                return destBase+destPath.replace('.js', '.min.js');
+            }
+        })
 }
 },
 // Task for minify HTML
@@ -49,12 +56,12 @@ options: {
   collapseWhitespace: true
 },
 files: { // Dictionary of files 
-  '../template-home-source.html': 'index.html'
+  '../release/index.php': 'index.html'
 }
 },
 dev: { // Another target 
   files: {
-    '../template-home-source.html': 'index.html'
+    '../release/index.php': 'index.html'
   }
 }
 },
@@ -62,7 +69,7 @@ dev: { // Another target
 'html-prettyprinter': {
   custom: {
     src: 'index.html',
-    dest: '../template-home-source.html',
+    dest: '../release/index.php',
     options: {
       indent_size: 2,
       indent_char: ' ',
@@ -75,15 +82,15 @@ imagemin: {
       dynamic: {
         files: [{
             expand: true,
-            cwd: 'source/', // way where to search the images
+            cwd: 'images', // way where to search the images
             src: ['**/*.{png,jpg,gif,svg}'], // formats for convert
-            dest: './' //folder for save result
+            dest: '../release/images' //folder for save result
     }]
     }
 },
 watch: {
   styles: {
-files: ['source/less/**/*.less', 'source/js/**/*.js', '**/*.html'], // which files to watch
+files: ['less/**/*.less', 'js/**/*.js', '**/*.html'], // which files to watch
 tasks: ['less', 'jshint', 'uglify', 'htmlmin', 'html-prettyprinter', 'imagemin'], // tasks for watching
 options: {
   nospawn: true
